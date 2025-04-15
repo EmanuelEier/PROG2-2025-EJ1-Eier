@@ -1,4 +1,9 @@
 public class CajaDeAhorro extends Cuenta implements IGestionSaldo {
+
+    public CajaDeAhorro(CajaDeAhorroBuilder.Builder builder) {
+        this.numeroCuenta = builder.numeroCuenta;
+        this.saldo = builder.saldo;
+    }
     @Override
     public boolean agregarSaldo(double monto) {
         saldo += monto;

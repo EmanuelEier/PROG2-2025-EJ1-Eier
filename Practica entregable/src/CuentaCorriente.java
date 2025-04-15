@@ -1,6 +1,11 @@
 public class CuentaCorriente extends Cuenta {
     private double giroDescubierto;
 
+    public CuentaCorriente(CuentaCorrienteBuilder.Builder builder) {
+        this.numeroCuenta = builder.numeroCuenta;
+        this.saldo = builder.saldo;
+        this.giroDescubierto = builder.giroResultado;
+    }
     @Override
     public synchronized boolean agregarSaldo(double monto) {
         saldo += monto;

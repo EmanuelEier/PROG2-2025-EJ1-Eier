@@ -15,10 +15,21 @@ public class LogicaCuenta {
         return instancia;
     }
 
+    public boolean agregarCuenta(Cuenta cuenta) {
+        Cuenta cuentaCreada = cuentas.stream()
+                .filter(x -> x.getNumeroCuenta() == cuenta.getNumeroCuenta())
+                .findFirst()
+                .orElse(null);
+
+        if (cuentaCreada != null) return false;
+
+        cuentas.add(cuenta);
+        return true;
+    }
 
     public boolean agregarSaldo(int nroCuenta, double monto) {
         Cuenta cuenta = cuentas.stream()
-                .filter(x -> x.getID() == nroCuenta)
+                .filter(x -> x.getNumeroCuenta() == nroCuenta)
                 .findFirst()
                 .orElse(null);
 
@@ -29,7 +40,7 @@ public class LogicaCuenta {
 
     public boolean quitarSaldo(int nroCuenta, double monto) {
         Cuenta cuenta = cuentas.stream()
-                .filter(x -> x.getID() == nroCuenta)
+                .filter(x -> x.getNumeroCuenta() == nroCuenta)
                 .findFirst()
                 .orElse(null);
 
@@ -40,7 +51,7 @@ public class LogicaCuenta {
 
     public double consultarSaldo(int nroCuenta) {
         Cuenta cuenta = cuentas.stream()
-                .filter(x -> x.getID() == nroCuenta)
+                .filter(x -> x.getNumeroCuenta() == nroCuenta)
                 .findFirst()
                 .orElse(null);
 

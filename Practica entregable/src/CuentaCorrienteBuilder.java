@@ -10,9 +10,9 @@ public class CuentaCorrienteBuilder {
     }
 
     public static class Builder {
-        private int numeroCuenta;
-        private double saldo;
-        private double giroResultado;
+        public int numeroCuenta;
+        public double saldo;
+        public double giroResultado;
 
         public Builder setNumeroCuenta(int numeroCuenta) {
             this.numeroCuenta = numeroCuenta;
@@ -29,8 +29,8 @@ public class CuentaCorrienteBuilder {
             return this;
         }
 
-        public CuentaCorrienteBuilder build() {
-            return new CuentaCorrienteBuilder(this);
+        public CuentaCorriente build() {
+            return new CuentaCorriente(this);
         }
     }
 }

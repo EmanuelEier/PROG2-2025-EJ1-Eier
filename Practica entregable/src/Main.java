@@ -9,15 +9,14 @@ public class Main {
 
         for (int x = 0; x < 10; x++) {
             if (x % 2 == 0) {
-                CajaDeAhorroBuilder cajaDeAhorro = new CajaDeAhorroBuilder.Builder()
+                CajaDeAhorro cajaDeAhorro = new CajaDeAhorroBuilder.Builder()
                         .setNumeroCuenta(x)
                         .build();
-                CajaDeAhorro cajaDeAhorro = cajaDeAhorroBuilder.getCajaDeAhorro();
-                logicaCuenta.agregarCuentas(cajaDeAhorro);
+                logica.agregarCuenta(cajaDeAhorro);
 
             } else {
-                CuentaCorrienteBuilder cuentaCorrienteBuilder = new CuentaCorrienteBuilder();
-                cuentaCorrienteBuilder.setId(x);
+                CuentaCorrienteBuilder.Builder cuentaCorrienteBuilder = new CuentaCorrienteBuilder.Builder();
+                cuentaCorrienteBuilder.setNumeroCuenta(x);
                 cuentaCorrienteBuilder.setGiroDescubierto(random.nextDouble(7000, 90000));
                 CuentaCorriente cuentaCorriente = cuentaCorrienteBuilder.getCuentaCorriente();
                 logicaCuenta.agregarCuentas(cuentaCorriente);
@@ -33,8 +32,8 @@ public class Main {
             int total = 0;
 
             for (int i = 0; i < 20; i++) {
-                System.out.println("Saldo cuenta " + (i + 1 ) + " " + LogicaCuenta.obtenerInstancia().consultarSaldo(i));
-                System.out.println("Movimientos cuenta " + (i + 1 ) + " " + LogicaCuenta.obtenerInstancia().getTransacciones(i));
+                System.out.println("Saldo cuenta " + (i + 1) + " " + LogicaCuenta.obtenerInstancia().consultarSaldo(i));
+                System.out.println("Movimientos cuenta " + (i + 1) + " " + LogicaCuenta.obtenerInstancia().getTransacciones(i));
                 total += LogicaCuenta.obtenerInstancia().getTransacciones(i);
             }
 
