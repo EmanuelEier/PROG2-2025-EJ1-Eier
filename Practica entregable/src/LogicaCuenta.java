@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 public class LogicaCuenta {
     private static volatile LogicaCuenta instancia;
-    private final List<IGestionSaldo> cuentas;
+    private final List<Cuenta> cuentas;
 
     private LogicaCuenta() {
         cuentas = new ArrayList<>();
@@ -10,32 +10,45 @@ public class LogicaCuenta {
 
     public static LogicaCuenta getInstancia() {
         if (instancia == null) {
-            synchronized (LogicaCuenta.class) {
-                if (instancia == null) {
                     instancia = new LogicaCuenta();
-                }
             }
-        }
         return instancia;
     }
 
 
     public boolean agregarSaldo(int nroCuenta, double monto) {
-        IGestionSaldo cuenta = cuentas.get(nroCuenta);
-        return cuenta.agregarSaldo(monto);
+        Cuenta cuenta = cuentas.stream()
+                .filter(x -> x.getID() == nroCuenta)
+                .findFirst()
+                .orElse(null);
+
+        if (cuenta == null) return false;
+        else cuenta.agregarSaldo(monto);
+        return true;
     }
 
     public boolean quitarSaldo(int nroCuenta, double monto) {
-        IGestionSaldo cuenta = cuentas.get(nroCuenta);
-        return cuenta.quitarSaldo(monto);
+        Cuenta cuenta = cuentas.stream()
+                .filter(x -> x.getID() == nroCuenta)
+                .findFirst()
+                .orElse(null);
+
+        if (cuenta == null) return false;
+        else cuenta.quitarSaldo(monto);
+        return true;
     }
 
     public double consultarSaldo(int nroCuenta) {
-        IGestionSaldo cuenta = cuentas.get(nroCuenta);
-        return cuenta.getSaldo();
+        Cuenta cuenta = cuentas.stream()
+                .filter(x -> x.getID() == nroCuenta)
+                .findFirst()
+                .orElse(null);
+
+        if (cuenta == null) return 0;
+        else return cuenta.getSaldo();
     }
 
-    public IGestionSaldo getCuenta(int index) {
-        return cuentas.get(index);
+    public Cuenta getCuenta(int indice) {
+        return cuentas.get(indice);
     }
 }

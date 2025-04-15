@@ -5,6 +5,7 @@ public abstract class Cuenta {
 
     public abstract double getSaldo();
     public abstract int getOperaciones();
+    public abstract int getID();
     public abstract boolean agregarSaldo(double monto);
     public abstract boolean quitarSaldo(double monto);
 

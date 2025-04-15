@@ -1,9 +1,9 @@
-public class CuentaCorrienteDTO {
+public class CajaDeAhorroBuilder {
     private final int numeroCuenta;
     private final double saldo;
     private final double giroResultado;
 
-    private CuentaCorrienteDTO(Builder builder) {
+    private CajaDeAhorroBuilder(Builder builder) {
         this.numeroCuenta = builder.numeroCuenta;
         this.saldo = builder.saldo;
         this.giroResultado = builder.giroResultado;
@@ -24,13 +24,8 @@ public class CuentaCorrienteDTO {
             return this;
         }
 
-        public Builder conGiroResultado(double giroResultado) {
-            this.giroResultado = giroResultado;
-            return this;
-        }
-
-        public CuentaCorrienteDTO build() {
-            return new CuentaCorrienteDTO(this);
+        public CajaDeAhorro build() {
+            return new CajaDeAhorro(this);
         }
     }
 }
