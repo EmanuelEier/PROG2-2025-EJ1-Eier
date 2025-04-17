@@ -1,5 +1,5 @@
 import java.util.Random;
-import
+
 
 public class Main {
     public static void main(String[] args) {
@@ -9,35 +9,36 @@ public class Main {
 
         for (int x = 0; x < 10; x++) {
             if (x % 2 == 0) {
-                CajaDeAhorro cajaDeAhorro = new CajaDeAhorroBuilder.Builder()
+                CajaDeAhorro cajaDeAhorro = new CajaDeAhorroDTO.Builder()
                         .setNumeroCuenta(x)
                         .build();
                 logica.agregarCuenta(cajaDeAhorro);
 
             } else {
-                CuentaCorrienteBuilder.Builder cuentaCorrienteBuilder = new CuentaCorrienteBuilder.Builder();
-                cuentaCorrienteBuilder.setNumeroCuenta(x);
-                cuentaCorrienteBuilder.setGiroDescubierto(random.nextDouble(7000, 90000));
-                CuentaCorriente cuentaCorriente = cuentaCorrienteBuilder.getCuentaCorriente();
-                logicaCuenta.agregarCuentas(cuentaCorriente);
+                CuentaCorriente cuentaCorriente = new CuentaCorrienteDTO.Builder()
+                        .setNumeroCuenta(x)
+                        .setGiroDescubierto(random.nextDouble(1000, 50000))
+                        .build();
+                logica.agregarCuenta(cuentaCorriente);
 
             }
         }
 
-            for (int i = 0; i < 5000; i++) {
-                var res = LogicaCuenta.obtenerInstancia().agregarSaldo(random.nextInt(20), 200);
-                var res1 = LogicaCuenta.obtenerInstancia().quitarSaldo(random.nextInt(20), 100);
+        for (int x = 0; x < 10000; x++) {
+              var resultado1 = logica.agregarSaldo(random.nextInt(10), 200);
+              var resultado2 = logica.quitarSaldo(random.nextInt(10), 50);
+        }
+
+        int total = 0;
+
+        for (int x = 0; x < 10; x++) {
+                System.out.println("Saldo cuenta n° " + (x + 1) + ": " + logica.consultarSaldo(x));
+                System.out.println("Movimientos cuenta n°" + (x + 1) + ": " + logica.getOperaciones(x));
+                System.out.println("");
+                total += logica.getOperaciones(x);
             }
 
-            int total = 0;
-
-            for (int i = 0; i < 20; i++) {
-                System.out.println("Saldo cuenta " + (i + 1) + " " + LogicaCuenta.obtenerInstancia().consultarSaldo(i));
-                System.out.println("Movimientos cuenta " + (i + 1) + " " + LogicaCuenta.obtenerInstancia().getTransacciones(i));
-                total += LogicaCuenta.obtenerInstancia().getTransacciones(i);
-            }
-
-            System.out.println("\n" + total);
+            System.out.println("El número total de operaciones fue:"+ "\n" + total);
 
         }
 

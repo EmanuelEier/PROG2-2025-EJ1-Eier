@@ -62,4 +62,14 @@ public class LogicaCuenta {
     public Cuenta getCuenta(int indice) {
         return cuentas.get(indice);
     }
+
+    public int getOperaciones(int nroCuenta) {
+        Cuenta cuenta = cuentas.stream()
+                .filter(x -> x.getNumeroCuenta() == nroCuenta)
+                .findFirst()
+                .orElse(null);
+
+        if (cuenta == null) return 0;
+        else return cuenta.getOperaciones();
+    }
 }

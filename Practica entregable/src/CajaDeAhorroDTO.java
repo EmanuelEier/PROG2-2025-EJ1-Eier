@@ -1,8 +1,8 @@
-public class CajaDeAhorroBuilder {
+public class CajaDeAhorroDTO {
     private final int numeroCuenta;
     private final double saldo;
 
-    private CajaDeAhorroBuilder(Builder builder) {
+    private CajaDeAhorroDTO(Builder builder) {
         this.numeroCuenta = builder.numeroCuenta;
         this.saldo = builder.saldo;
     }

@@ -1,12 +1,12 @@
-public class CuentaCorrienteBuilder {
+public class CuentaCorrienteDTO {
     private final int numeroCuenta;
     private final double saldo;
-    private final double giroResultado;
+    private final double giroDescubierto;
 
-    private CuentaCorrienteBuilder(Builder builder) {
+    private CuentaCorrienteDTO(Builder builder) {
         this.numeroCuenta = builder.numeroCuenta;
         this.saldo = builder.saldo;
-        this.giroResultado = builder.giroResultado;
+        this.giroDescubierto = builder.giroResultado;
     }
 
     public static class Builder {
@@ -24,8 +24,8 @@ public class CuentaCorrienteBuilder {
             return this;
         }
 
-        public Builder conGiroResultado(double giroResultado) {
-            this.giroResultado = giroResultado;
+        public Builder setGiroDescubierto(double giroDescubierto) {
+            this.giroResultado = giroDescubierto;
             return this;
         }
 
