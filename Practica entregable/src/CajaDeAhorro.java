@@ -1,12 +1,12 @@
 public class CajaDeAhorro extends Cuenta implements IGestionSaldo {
 
-    public CajaDeAhorro(CajaDeAhorroDTO.Builder builder) {
-        this.numeroCuenta = builder.numeroCuenta;
-        this.saldo = builder.saldo;
+    public CajaDeAhorro(CajaDeAhorroDTO dto) {
+        this.numeroCuenta = dto.getNumeroCuenta();
+        this.saldo = dto.getSaldo();
     }
 
     @Override
-    public boolean agregarSaldo(double monto) {
+    public synchronized boolean agregarSaldo(double monto) {
         saldo += monto;
         operaciones++;
         return true;
@@ -31,5 +31,4 @@ public class CajaDeAhorro extends Cuenta implements IGestionSaldo {
     public int getOperaciones() {
         return operaciones;
     }
-
 }

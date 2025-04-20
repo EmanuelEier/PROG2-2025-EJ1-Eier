@@ -7,9 +7,17 @@ public class CajaDeAhorroDTO {
         this.saldo = builder.saldo;
     }
 
+    public int getNumeroCuenta() {
+        return numeroCuenta;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
     public static class Builder {
-        public int numeroCuenta;
-        public double saldo;
+        private int numeroCuenta;
+        private double saldo;
 
         public Builder setNumeroCuenta(int numeroCuenta) {
             this.numeroCuenta = numeroCuenta;
@@ -21,8 +29,8 @@ public class CajaDeAhorroDTO {
             return this;
         }
 
-        public CajaDeAhorro build() {
-            return new CajaDeAhorro(this);
+        public CajaDeAhorroDTO build() {
+            return new CajaDeAhorroDTO(this);
         }
     }
 }

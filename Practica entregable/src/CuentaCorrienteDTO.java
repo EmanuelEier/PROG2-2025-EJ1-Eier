@@ -6,13 +6,25 @@ public class CuentaCorrienteDTO {
     private CuentaCorrienteDTO(Builder builder) {
         this.numeroCuenta = builder.numeroCuenta;
         this.saldo = builder.saldo;
-        this.giroDescubierto = builder.giroResultado;
+        this.giroDescubierto = builder.giroDescubierto;
+    }
+
+    public int getNumeroCuenta() {
+        return numeroCuenta;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public double getGiroDescubierto() {
+        return giroDescubierto;
     }
 
     public static class Builder {
-        public int numeroCuenta;
-        public double saldo;
-        public double giroResultado;
+        private int numeroCuenta;
+        private double saldo;
+        private double giroDescubierto;
 
         public Builder setNumeroCuenta(int numeroCuenta) {
             this.numeroCuenta = numeroCuenta;
@@ -25,12 +37,12 @@ public class CuentaCorrienteDTO {
         }
 
         public Builder setGiroDescubierto(double giroDescubierto) {
-            this.giroResultado = giroDescubierto;
+            this.giroDescubierto = giroDescubierto;
             return this;
         }
 
-        public CuentaCorriente build() {
-            return new CuentaCorriente(this);
+        public CuentaCorrienteDTO build() {
+            return new CuentaCorrienteDTO(this);
         }
     }
 }

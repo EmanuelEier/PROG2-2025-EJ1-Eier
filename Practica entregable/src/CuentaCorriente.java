@@ -1,10 +1,10 @@
 public class CuentaCorriente extends Cuenta {
     private double giroDescubierto;
 
-    public CuentaCorriente(CuentaCorrienteDTO.Builder builder) {
-        this.numeroCuenta = builder.numeroCuenta;
-        this.saldo = builder.saldo;
-        this.giroDescubierto = builder.giroResultado;
+    public CuentaCorriente(CuentaCorrienteDTO dto) {
+        this.numeroCuenta = dto.getNumeroCuenta();
+        this.saldo = dto.getSaldo();
+        this.giroDescubierto = dto.getGiroDescubierto();
     }
 
     private void setGiroDescubierto(){
